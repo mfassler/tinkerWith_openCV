@@ -56,7 +56,7 @@ int main(int argc, char * argv[]) {
 	rs2::pipeline pipe;
 	rs2::config cfg;
 
-	cfg.enable_stream(RS2_STREAM_COLOR, _RGB_WIDTH, _RGB_HEIGHT, RS2_FORMAT_RGB8, _FPS);
+	cfg.enable_stream(RS2_STREAM_COLOR, _RGB_WIDTH, _RGB_HEIGHT, RS2_FORMAT_BGR8, _FPS);
 	cfg.enable_stream(RS2_STREAM_DEPTH, _DEPTH_WIDTH, _DEPTH_HEIGHT, RS2_FORMAT_Z16, _FPS);
 
 	printf("Starting the Intel RealSense driver...\n");
@@ -122,10 +122,8 @@ int main(int argc, char * argv[]) {
 		cv::Mat imD(cv::Size(_DEPTH_WIDTH, _DEPTH_HEIGHT),
 						CV_16UC1, (void*)depth.get_data(), cv::Mat::AUTO_STEP);
 
-		// For now, we will use full-color for display:
-		cv::cvtColor(imRGB, imRGB, cv::COLOR_RGB2BGR);
-		// and grayscale for calculations:
-		cv::cvtColor(imRGB, frame_gray, cv::COLOR_RGB2GRAY);
+		// We use grayscale for calculations:
+		cv::cvtColor(imRGB, frame_gray, cv::COLOR_BGR2GRAY);
 
 		if (prev_gray.empty()) {
 			frame_gray.copyTo(prev_gray);
