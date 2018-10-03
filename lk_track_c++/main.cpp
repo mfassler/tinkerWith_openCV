@@ -36,8 +36,8 @@ int main(int argc, char * argv[]) {
 	//cfg.enable_stream(RS2_STREAM_DEPTH, _DEPTH_WIDTH, _DEPTH_HEIGHT, RS2_FORMAT_Z16, _FPS);
 
 	printf("Starting the Intel RealSense driver...\n");
-	//auto profile = pipe.start();
-	rs2::pipeline_profile profile = pipe.start();
+	//auto profile = pipe.start(cfg);
+	rs2::pipeline_profile profile = pipe.start(cfg);
 	printf("...started.  (I hope.)\n");
 
 	//auto depth_sensor = profile.get_device().first<rs2::depth_sensor>();
