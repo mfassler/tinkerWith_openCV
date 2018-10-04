@@ -59,6 +59,8 @@ int main(int argc, char * argv[]) {
 	cfg.enable_stream(RS2_STREAM_COLOR, _RGB_WIDTH, _RGB_HEIGHT, RS2_FORMAT_BGR8, _FPS);
 	cfg.enable_stream(RS2_STREAM_DEPTH, _DEPTH_WIDTH, _DEPTH_HEIGHT, RS2_FORMAT_Z16, _FPS);
 
+	//cfg.enable_device_from_file(argv[1]);
+
 	printf("Starting the Intel RealSense driver...\n");
 	//auto profile = pipe.start(cfg);
 	rs2::pipeline_profile profile = pipe.start(cfg);
