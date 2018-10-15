@@ -132,8 +132,6 @@ int main(int argc, char * argv[]) {
 		}
 
 		if (!tracks.empty()) {
-			auto img0 = prev_gray;
-			auto img1 = frame_gray;
 
 			std::vector<uchar> status;
 			std::vector<float> err;
